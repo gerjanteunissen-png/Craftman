@@ -1,200 +1,509 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HandyPro Services – Your Local Craftsman</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<style>
-/* --- General Reset --- */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Roboto', sans-serif; background: #f7f7f7; color: #333; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ProCraftsman Services – Professional Home Repairs & Renovations</title>
+  <meta name="description" content="Reliable craftsman offering expert painting, carpentry, tiling, plastering, maintenance and small repairs. Quality work, on time, every time."/>
 
-/* --- Header --- */
-header {
-  position: relative;
-  background: url('https://images.pexels.com/photos/1643386/pexels-photo-1643386.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
-  height: 100vh;
-  display: flex; justify-content: center; align-items: center;
-  text-align: center;
-  color: white;
-}
-header::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: rgba(0,0,0,0.5);
-}
-header h1, header p {
-  position: relative; z-index: 1;
-}
-header h1 { font-size: 3.5em; margin-bottom: 20px; }
-header p { font-size: 1.5em; }
+  <!-- Font Awesome 6 Free -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-/* --- Sections --- */
-section { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
-h2 { text-align: center; color: #2a7f62; margin-bottom: 40px; }
+  <style>
+    :root {
+      --primary: #1e5c48;
+      --primary-light: #2a7f62;
+      --light-bg: #f9fafb;
+      --dark-text: #111827;
+      --gray: #4b5563;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
 
-/* --- Services Grid --- */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-}
-.service-card { perspective: 1000px; }
-.card-inner {
-  position: relative;
-  width: 100%; height: 300px;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-}
-.service-card:hover .card-inner { transform: rotateY(180deg); }
-.card-front, .card-back {
-  position: absolute; width: 100%; height: 100%;
-  border-radius: 16px; backface-visibility: hidden; overflow: hidden;
-}
-.card-front {
-  background: #fff;
-  display: flex; flex-direction: column;
-  justify-content: center; align-items: center;
-  transition: all 0.3s ease;
-  position: relative;
-}
-.card-front img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 15px; }
-.card-front h3 { font-size: 1.3em; color: #2a7f62; }
-.card-back {
-  background: #2a7f62; color: white; transform: rotateY(180deg);
-  padding: 20px; display: flex; flex-direction: column; justify-content: center;
-}
-.card-back h4 { margin-bottom: 10px; }
-.card-back ul { padding-left: 20px; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* --- About Us --- */
-.about { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; margin-bottom: 50px; }
-.about img { width: 100%; max-width: 500px; border-radius: 16px; }
-.about-text { flex: 1; }
-.about-text p { margin-bottom: 15px; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: var(--light-bg);
+      color: var(--dark-text);
+      line-height: 1.6;
+    }
 
-/* --- Buttons --- */
-button { background-color: #2a7f62; color: white; padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; margin-top: 20px; transition: 0.3s; }
-button:hover { background-color: #237254; }
+    /* HERO */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
+                  url('https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 0 20px;
+    }
 
-/* --- Modal Form --- */
-.modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); justify-content: center; align-items: center; }
-.modal-content { background: #fff; padding: 30px; border-radius: 16px; max-width: 500px; width: 90%; position: relative; }
-.close { position: absolute; right: 15px; top: 15px; font-size: 1.5em; cursor: pointer; color: #333; }
-.modal-content h3 { margin-top: 0; }
-.modal-content input, .modal-content textarea {
-  width: 100%; padding: 10px; margin-top: 10px; margin-bottom: 15px;
-  border-radius: 6px; border: 1px solid #ccc; box-sizing: border-box;
-}
-.modal-content input[type="submit"] {
-  background-color: #2a7f62; color: white; border: none; cursor: pointer; transition: 0.3s;
-}
-.modal-content input[type="submit"]:hover { background-color: #237254; }
+    .hero-content {
+      max-width: 900px;
+    }
 
-/* --- Footer --- */
-footer { background: #2a7f62; color: white; text-align: center; padding: 30px; margin-top: 50px; }
+    .hero h1 {
+      font-size: clamp(3.5rem, 8vw, 5.8rem);
+      font-weight: 800;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 4px 14px rgba(0,0,0,0.7);
+    }
 
-/* --- Animations --- */
-.fade-in { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-</style>
+    .hero p {
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      font-weight: 300;
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn {
+      background: var(--primary-light);
+      color: white;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(42,127,98,0.35);
+    }
+
+    .btn:hover {
+      background: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: 0 14px 36px rgba(30,92,72,0.45);
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 1240px;
+      margin: 100px auto;
+      padding: 0 24px;
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--primary);
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 3.5rem;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .service-card {
+      perspective: 1200px;
+      height: 380px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.7s ease;
+      transform-style: preserve-3d;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      background: white;
+    }
+
+    .service-card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      border-radius: 16px;
+    }
+
+    .card-front {
+      background: white;
+      text-align: center;
+    }
+
+    .card-front i {
+      font-size: 5.5rem;
+      color: var(--primary);
+      margin-bottom: 1.4rem;
+      transition: transform 0.6s ease;
+    }
+
+    .service-card:hover .card-front i {
+      transform: rotate(360deg);
+    }
+
+    .card-front h3 {
+      font-size: 1.7rem;
+      margin: 0.8rem 0 0.4rem;
+    }
+
+    .card-back {
+      background: var(--primary);
+      color: white;
+      transform: rotateY(180deg);
+      text-align: center;
+    }
+
+    .card-back h4 {
+      font-size: 1.6rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .card-back ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      text-align: left;
+      max-width: 90%;
+    }
+
+    .card-back li {
+      margin: 0.7rem 0;
+    }
+
+    /* ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 900px) {
+      .about {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2.8rem;
+      border-radius: 16px;
+      max-width: 520px;
+      width: 90%;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    .close {
+      position: absolute;
+      right: 1.8rem;
+      top: 1.2rem;
+      font-size: 2.4rem;
+      cursor: pointer;
+      color: var(--gray);
+    }
+
+    .close:hover {
+      color: var(--dark-text);
+    }
+
+    .modal-content h3 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .modal-content label {
+      display: block;
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+      color: var(--gray);
+    }
+
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1.4rem;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 1.05rem;
+    }
+
+    .modal-content textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .modal-content input[type="submit"] {
+      background: var(--primary);
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 16px;
+      font-size: 1.15rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .modal-content input[type="submit"]:hover {
+      background: var(--primary-light);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark-text);
+      color: #d1d5db;
+      text-align: center;
+      padding: 3.5rem 1rem;
+      margin-top: 6rem;
+      font-size: 0.98rem;
+    }
+
+    /* FADE-IN */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 4rem; }
+      .hero p  { font-size: 1.5rem; }
+      h2       { font-size: 2.4rem; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <h1>HandyPro Services</h1>
-  <p>Your Trusted Local Craftsman</p>
-</header>
+<!-- HERO -->
+<div class="hero fade-in">
+  <div class="hero-content">
+    <h1>ProCraftsman Services</h1>
+    <p>Professional home repairs, renovations and maintenance – quality craftsmanship you can trust</p>
+    <button class="btn" id="quoteBtn">Request a Free Quote</button>
+  </div>
+</div>
 
-<section>
+<!-- SERVICES -->
+<section class="fade-in">
   <h2>Our Services</h2>
-  <div class="services-grid" id="servicesGrid"></div>
-</section>
+  <div class="services-grid">
 
-<section>
-  <h2>About Us</h2>
-  <div class="about">
-    <div class="about-text">
-      <p>HandyPro is your local expert for home renovations and repairs. We provide quality workmanship with attention to every detail.</p>
-      <p>Contact us at: <strong>info@handypro.com</strong><br>Phone: <strong>+123 456 7890</strong><br>Address: <strong>123 Craft Street, Cityville</strong></p>
-      <button id="quoteBtn">Request a Quote</button>
+    <!-- 1. Painting -->
+    <div class="service-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-paintbrush"></i>
+          <h3>Painting</h3>
+        </div>
+        <div class="card-back">
+          <h4>Painting</h4>
+          <ul>
+            <li>Interior & exterior painting</li>
+            <li>Walls, ceilings and trim</li>
+            <li>Doors, windows and frames</li>
+            <li>Sealing, caulking & prep work</li>
+            <li>Color consultation & sampling</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <img src="https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Workshop">
+
+    <!-- 2. Carpentry -->
+    <div class="service-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-hammer"></i>
+          <h3>Carpentry</h3>
+        </div>
+        <div class="card-back">
+          <h4>Carpentry</h4>
+          <ul>
+            <li>Custom cabinets & furniture</li>
+            <li>Door & window frame installation</li>
+            <li>Shelving & storage solutions</li>
+            <li>Staircases, handrails & trim</li>
+            <li>Wood repairs & restoration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Tiling -->
+    <div class="service-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-trowel"></i>
+          <h3>Tiling</h3>
+        </div>
+        <div class="card-back">
+          <h4>Tiling</h4>
+          <ul>
+            <li>Floor & wall tiling</li>
+            <li>Bathroom & kitchen specialists</li>
+            <li>Ceramic, porcelain & natural stone</li>
+            <li>Precision grouting & sealing</li>
+            <li>Tile repair & replacement</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Plastering -->
+    <div class="service-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-trowel-bricks"></i>
+          <h3>Plastering</h3>
+        </div>
+        <div class="card-back">
+          <h4>Plastering & Skimming</h4>
+          <ul>
+            <li>Wall & ceiling skimming</li>
+            <li>Crack & damage repair</li>
+            <li>Smooth plaster finishes</li>
+            <li>Drywall taping & jointing</li>
+            <li>Preparation for painting</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Maintenance & Repairs -->
+    <div class="service-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-wrench"></i>
+          <h3>Maintenance & Repairs</h3>
+        </div>
+        <div class="card-back">
+          <h4>Maintenance & Small Repairs</h4>
+          <ul>
+            <li>Minor plumbing & electrical fixes</li>
+            <li>Door, window & lock adjustments</li>
+            <li>General home maintenance</li>
+            <li>Furniture & fixture repairs</li>
+            <li>Assembly & installation services</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- Modal Form -->
+<!-- ABOUT -->
+<section class="fade-in">
+  <h2>About Us</h2>
+  <div class="about">
+    <div>
+      <p>ProCraftsman Services is a trusted local craftsman with more than 15 years of experience in high-quality home improvements, repairs and renovations.</p>
+      <p>We specialize in precise painting, solid carpentry, flawless tiling, smooth plastering, and reliable day-to-day maintenance. Every job is carried out with attention to detail, cleanliness, punctuality and clear communication.</p>
+      <p>Your home – treated with care and finished to the highest standard.</p>
+      <button class="btn" id="quoteBtnBottom">Get Your Free Quote Today</button>
+    </div>
+    <img src="https://images.pexels.com/photos/1643386/pexels-photo-1643386.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Professional craftsman workshop with organized tools">
+  </div>
+</section>
+
+<!-- QUOTE MODAL -->
 <div class="modal" id="quoteModal">
   <div class="modal-content">
-    <span class="close" id="closeModal">&times;</span>
-    <h3>Request a Quote</h3>
-    <form>
-      <label for="name">Full Name</label>
-      <input type="text" id="name" required>
+    <span class="close" id="closeModal">×</span>
+    <h3>Request a Free Quote</h3>
+    <form action="https://formspree.io/f/your-form-id-here" method="POST">
+      <label for="name">Full Name *</label>
+      <input type="text" id="name" name="name" required>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" required>
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required>
 
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" required>
+      <label for="phone">Phone Number *</label>
+      <input type="tel" id="phone" name="phone" required>
 
-      <label for="service">Service Interested In</label>
-      <input type="text" id="service" required>
+      <label for="service">Service Interested In *</label>
+      <input type="text" id="service" name="service" required placeholder="e.g. Full house painting, Bathroom tiling">
 
-      <label for="details">Project Details</label>
-      <textarea id="details" rows="4" required></textarea>
+      <label for="details">Project Details (optional)</label>
+      <textarea id="details" name="details" placeholder="Tell us about your project – location, size, timeline, special requirements..."></textarea>
 
-      <input type="submit" value="Submit Request">
+      <input type="submit" value="Send Request">
     </form>
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
-  &copy; 2026 HandyPro — Your Trusted Craftsman
+  © 2026 ProCraftsman Services – Professional, Reliable, Clean Workmanship<br>
+  Quality craftsmanship for your home
 </footer>
 
 <script>
-// --- Services Array ---
-const services = [
-  {name:"Painting", image:"https://img.icons8.com/color/96/000000/paint-roller.png", details:["Wall painting","Ceiling painting","Doors & windows","Sealing edges","Color consultation"]},
-  {name:"Carpentry", image:"https://img.icons8.com/color/96/000000/wood.png", details:["Custom furniture","Door & window frames","Shelving & cabinetry","Wood restoration","Staircase building"]},
-  {name:"Tiling", image:"https://img.icons8.com/color/96/000000/tiling.png", details:["Floor tiling","Wall tiling","Bathroom & kitchen","Grouting","Tile repair"]},
-  {name:"Plastering", image:"https://img.icons8.com/color/96/000000/plaster.png", details:["Wall smoothing","Ceiling repair","Crack filling","Surface preparation","Plaster finishing"]},
-  {name:"Maintenance", image:"https://img.icons8.com/color/96/000000/tools.png", details:["Electrical fixes","Plumbing repairs","Door & window adjustments","General maintenance","Furniture repair"]}
-];
-
-// --- Populate Services ---
-const grid = document.getElementById('servicesGrid');
-services.forEach(s => {
-  const card = document.createElement('div');
-  card.className = 'service-card fade-in';
-  card.innerHTML = `<div class="card-inner">
-    <div class="card-front"><img src="${s.image}" alt="${s.name}"><h3>${s.name}</h3></div>
-    <div class="card-back"><h4>${s.name} Includes:</h4><ul>${s.details.map(d=>`<li>${d}</li>`).join('')}</ul></div>
-  </div>`;
-  grid.appendChild(card);
-});
-
-// --- Modal Logic ---
-const modal = document.getElementById('quoteModal');
-const btn = document.getElementById('quoteBtn');
-const span = document.getElementById('closeModal');
-
-btn.onclick = () => modal.style.display = 'flex';
-span.onclick = () => modal.style.display = 'none';
-window.onclick = e => { if(e.target === modal) modal.style.display = 'none'; }
-
-// --- Scroll Animations ---
-const faders = document.querySelectorAll('.fade-in');
-window.addEventListener('scroll', () => {
-  faders.forEach(f => {
-    const rect = f.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 50) f.classList.add('visible');
+// Fade-in on scroll
+const fadeElements = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
+}, { threshold: 0.15 });
+fadeElements.forEach(el => observer.observe(el));
+
+// Modal controls
+const modal = document.getElementById('quoteModal');
+const quoteButtons = document.querySelectorAll('#quoteBtn, #quoteBtnBottom');
+const closeModal = document.getElementById('closeModal');
+
+quoteButtons.forEach(btn => {
+  btn.onclick = () => modal.style.display = 'flex';
 });
+
+closeModal.onclick = () => modal.style.display = 'none';
+
+window.onclick = (event) => {
+  if (event.target === modal) modal.style.display = 'none';
+};
 </script>
 
 </body>
