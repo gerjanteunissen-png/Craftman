@@ -1,206 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HandyPro Services – Your Trusted Local Craftsman</title>
-  <meta name="description" content="Professional local craftsman for painting, carpentry, tiling, plastering, maintenance & repairs. Reliable, clean, quality work.">
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HandyPro Services – Your Trusted Local Craftsman</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root {
+  --primary: #2a7f62;
+  --primary-dark: #1e5c48;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Roboto', sans-serif; background: var(--light); color: var(--dark); line-height: 1.6; }
 
-  <style>
-    :root {
-      --primary: #2a7f62;
-      --primary-dark: #1e5c48;
-      --light: #f8f9fa;
-      --dark: #212529;
-      --gray: #6c757d;
-      --shadow: 0 8px 24px rgba(0,0,0,0.08);
-    }
+/* HERO */
+header {
+  position: relative;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
+              url('https://images.pexels.com/photos/3807751/pexels-photo-3807751.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat fixed;
+  height: 70vh; min-height: 520px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; color: white; padding: 0 20px;
+}
+header::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.45);}
+header > * { position: relative; z-index: 1; }
+header h1 { font-size: clamp(2.8rem, 7vw, 4.8rem); font-weight: 700; margin-bottom: 0.8rem; text-shadow: 0 4px 12px rgba(0,0,0,0.7);}
+header p { font-size: clamp(1.3rem,3.5vw,1.7rem); margin-bottom: 2rem; max-width: 720px;}
+.btn { background: var(--primary); color: white; padding: 14px 40px; border: none; border-radius: 8px; font-size: 1.2rem; font-weight: 500; cursor: pointer; transition: all 0.35s ease; box-shadow: 0 6px 20px rgba(42,127,98,0.35);}
+.btn:hover { background: var(--primary-dark); transform: translateY(-4px); box-shadow:0 12px 32px rgba(30,92,72,0.45);}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Roboto', sans-serif; background: var(--light); color: var(--dark); line-height: 1.6; }
+/* SECTIONS */
+section { max-width: 1240px; margin: 90px auto; padding: 0 24px;}
+h2 { text-align: center; color: var(--primary); font-size: 2.8rem; font-weight: 700; margin-bottom: 3rem;}
 
-    /* HERO */
-    header {
-      position: relative;
-      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
-                  url('https://images.pexels.com/photos/3807751/pexels-photo-3807751.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat fixed;
-      height: 70vh;
-      min-height: 520px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      padding: 0 20px;
-    }
-    header::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-    }
-    header > * { position: relative; z-index: 1; }
-    header h1 { font-size: clamp(2.8rem, 7vw, 4.8rem); font-weight: 700; margin-bottom: 0.8rem; text-shadow: 0 4px 12px rgba(0,0,0,0.7); }
-    header p { font-size: clamp(1.3rem, 3.5vw, 1.7rem); margin-bottom: 2rem; max-width: 720px; }
-    .btn {
-      background: var(--primary);
-      color: white;
-      padding: 14px 40px;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.2rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.35s ease;
-      box-shadow: 0 6px 20px rgba(42,127,98,0.35);
-    }
-    .btn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(30,92,72,0.45);
-    }
+/* SERVICES GRID */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 2.5rem;}
+.service-card { perspective: 1200px; height: 380px; }
+.card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s ease; transform-style: preserve-3d; border-radius: 16px; box-shadow: var(--shadow); overflow: hidden;}
+.service-card:hover .card-inner { transform: rotateY(180deg);}
+.card-front, .card-back {
+  position: absolute; width: 100%; height: 100%; border-radius: 16px; backface-visibility: hidden;
+  display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; text-align: center;
+}
+.card-front { background: white;}
+.card-front img { width: 5.5rem; height: 5.5rem; margin-bottom: 1.4rem; transition: transform 0.6s ease; object-fit: contain;}
+.service-card:hover .card-front img { transform: rotate(360deg);}
+.card-front h3 { font-size: 1.55rem; font-weight: 700; margin-top: 0.8rem;}
 
-    /* SECTIONS */
-    section { max-width: 1240px; margin: 90px auto; padding: 0 24px; }
-    h2 { text-align: center; color: var(--primary); font-size: 2.8rem; font-weight: 700; margin-bottom: 3rem; }
+.card-back { background: var(--primary); color: white; transform: rotateY(180deg);}
+.card-back h4 { font-size: 1.5rem; margin-bottom: 1.5rem;}
+.card-back ul { list-style: none; padding: 0; font-size: 1.08rem; text-align: left; max-width: 85%;}
+.card-back li { margin: 0.7rem 0; position: relative; padding-left: 1.8rem;}
+.card-back li::before { content:"\f00c"; font-family:"Font Awesome 6 Free"; font-weight:900; position:absolute; left:0; color:white;}
 
-    /* SERVICES GRID */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
-    }
-    .service-card { perspective: 1200px; height: 380px; }
-    .card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.8s ease;
-      transform-style: preserve-3d;
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    .service-card:hover .card-inner { transform: rotateY(180deg); }
-    .card-front, .card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 16px;
-      backface-visibility: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      text-align: center;
-    }
-    .card-front { background: white; }
-    .card-front img, .card-front i {
-      width: 5.5rem;
-      height: 5.5rem;
-      font-size: 5.5rem;
-      color: var(--primary);
-      margin-bottom: 1.4rem;
-      transition: transform 0.6s ease;
-      object-fit: contain;
-    }
-    .service-card:hover .card-front img,
-    .service-card:hover .card-front i { transform: rotate(360deg); }
-    .card-front h3 { font-size: 1.55rem; font-weight: 700; margin-top: 0.8rem; }
-    .card-back { background: var(--primary); color: white; transform: rotateY(180deg); }
-    .card-back h4 { font-size: 1.5rem; margin-bottom: 1.5rem; }
-    .card-back ul { list-style: none; padding: 0; font-size: 1.08rem; text-align: left; max-width: 85%; }
-    .card-back li { margin: 0.7rem 0; position: relative; padding-left: 1.8rem; }
-    .card-back li::before {
-      content: "\f00c";
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-      position: absolute;
-      left: 0;
-      color: white;
-    }
+/* ABOUT */
+.about { display: grid; grid-template-columns:1fr 1fr; gap:4.5rem; align-items:center;}
+.about img { width: 100%; border-radius:16px; box-shadow: var(--shadow);}
+@media(max-width:900px) { .about { grid-template-columns:1fr; text-align:center;} }
 
-    /* ABOUT */
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4.5rem;
-      align-items: center;
-    }
-    .about img { width: 100%; border-radius: 16px; box-shadow: var(--shadow); }
-    @media (max-width: 900px) { .about { grid-template-columns: 1fr; text-align: center; } }
+/* MODAL */
+.modal { display:none; position:fixed; inset:0; background: rgba(0,0,0,0.65); justify-content:center; align-items:center; z-index:1000;}
+.modal-content { background:white; padding:2.8rem; border-radius:16px; max-width:540px; width:92%; position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.35);}
+.close { position:absolute; right:1.8rem; top:1.2rem; font-size:2.4rem; cursor:pointer; color:var(--gray);}
+.close:hover{color:var(--dark);}
+.modal-content h3 { color: var(--primary); font-size:2rem; margin-bottom:2rem; text-align:center;}
+.modal-content label { display:block; margin-bottom:0.6rem; font-weight:500; color: var(--gray);}
+.modal-content input, .modal-content textarea { width:100%; padding:1rem; margin-bottom:1.4rem; border:1px solid #d1d5db; border-radius:8px; font-size:1.05rem;}
+.modal-content textarea { min-height:120px; resize:vertical;}
+.modal-content input[type="submit"]{ background: var(--primary); color:white; border:none; width:100%; padding:16px; font-size:1.15rem; border-radius:8px; cursor:pointer; transition:all 0.3s;}
+.modal-content input[type="submit"]:hover{ background: var(--primary-dark);}
 
-    /* MODAL */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.65);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    .modal-content {
-      background: white;
-      padding: 2.8rem;
-      border-radius: 16px;
-      max-width: 540px;
-      width: 92%;
-      position: relative;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-    }
-    .close { position: absolute; right: 1.8rem; top: 1.2rem; font-size: 2.4rem; cursor: pointer; color: var(--gray); }
-    .close:hover { color: var(--dark); }
-    .modal-content h3 { color: var(--primary); font-size: 2rem; margin-bottom: 2rem; text-align: center; }
-    .modal-content label { display: block; margin-bottom: 0.6rem; font-weight: 500; color: var(--gray); }
-    .modal-content input, .modal-content textarea {
-      width: 100%; padding: 1rem; margin-bottom: 1.4rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1.05rem;
-    }
-    .modal-content textarea { min-height: 120px; resize: vertical; }
-    .modal-content input[type="submit"] {
-      background: var(--primary); color: white; border: none; width: 100%; padding: 16px; font-size: 1.15rem; border-radius: 8px; cursor: pointer; transition: all 0.3s;
-    }
-    .modal-content input[type="submit"]:hover { background: var(--primary-dark); }
+/* FOOTER */
+footer { background: var(--primary); color:white; text-align:center; padding:3rem 1rem; margin-top:6rem; font-size:0.98rem; }
 
-    /* FOOTER */
-    footer { background: var(--primary); color: white; text-align: center; padding: 3rem 1rem; margin-top: 6rem; font-size: 0.98rem; }
-
-    /* FADE-IN */
-    .fade-in { opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-  </style>
+/* FADE-IN */
+.fade-in { opacity:0; transform:translateY(50px); transition: all 1s ease-out;}
+.fade-in.visible{ opacity:1; transform:translateY(0);}
+</style>
 </head>
 <body>
 
-<!-- HERO -->
 <header class="fade-in">
   <h1>HandyPro Services</h1>
   <p>Your Trusted Local Craftsman – Quality Work You Can Rely On</p>
   <button class="btn" id="quoteBtn">Request a Quote</button>
 </header>
 
-<!-- SERVICES -->
 <section class="fade-in">
   <h2>Our Services</h2>
   <div class="services-grid" id="servicesGrid"></div>
 </section>
 
-<!-- ABOUT -->
 <section class="fade-in">
   <h2>About Us</h2>
   <div class="about">
     <div class="about-text">
-      <p>HandyPro is your reliable local craftsman specializing in high-quality home and office improvements. We offer professional painting, carpentry, tiling, plastering, and general maintenance & repairs.</p>
-      <p>With years of experience, we deliver clean, precise, and durable results — always on time and within budget. Your satisfaction is our priority.</p>
+      <p>HandyPro is your trusted local craftsman specializing in high-quality home and office improvements. Our team ensures precise, reliable, and clean work.</p>
       <p><strong>Contact us:</strong><br>
          Email: info@handypro.com<br>
          Phone: +1 234 567 890<br>
@@ -212,135 +113,58 @@
   </div>
 </section>
 
-<!-- MODAL FORM -->
 <div class="modal" id="quoteModal">
   <div class="modal-content">
     <span class="close" id="closeModal">×</span>
     <h3>Request a Free Quote</h3>
     <form action="https://formspree.io/f/your-form-id-here" method="POST">
-      <label for="name">Full Name *</label>
-      <input type="text" id="name" name="name" required>
-
-      <label for="email">Email *</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="phone">Phone Number *</label>
-      <input type="tel" id="phone" name="phone" required>
-
-      <label for="service">Service Interested In *</label>
-      <input type="text" id="service" name="service" required placeholder="e.g. Full house painting, Bathroom tiling">
-
-      <label for="details">Project Details (optional)</label>
-      <textarea id="details" name="details" placeholder="Describe your project: location, size, timeline, requirements..."></textarea>
-
+      <label for="name">Full Name *</label><input type="text" id="name" name="name" required>
+      <label for="email">Email *</label><input type="email" id="email" name="email" required>
+      <label for="phone">Phone Number *</label><input type="tel" id="phone" name="phone" required>
+      <label for="service">Service Interested In *</label><input type="text" id="service" name="service" required placeholder="e.g. Painting, Tiling">
+      <label for="details">Project Details (optional)</label><textarea id="details" name="details"></textarea>
       <input type="submit" value="Send Request">
     </form>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
-  © 2026 HandyPro Services – Your Trusted Local Craftsman<br>
-  Professional • Reliable • Clean Workmanship
+© 2026 HandyPro Services – Your Trusted Local Craftsman<br>
+Professional • Reliable • Clean Workmanship
 </footer>
 
 <script>
-// Fade-in animations
+// Fade-in scroll
 const fadeElements = document.querySelectorAll('.fade-in');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.15 });
-fadeElements.forEach(el => observer.observe(el));
+const observer = new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting) entry.target.classList.add('visible');});},{threshold:0.15});
+fadeElements.forEach(el=>observer.observe(el));
 
-// Services cards with flip
+// Services data
 const services = [
-  {
-    name: "Painting",
-    icon: "https://i.imgur.com/LGv3kSp.png",
-    details: [
-      "Interior wall painting",
-      "Exterior wall painting",
-      "Ceilings, trim & doors",
-      "Sealing edges & caulking",
-      "Primer application",
-      "Final finish & color consultation"
-    ]
-  },
-  {
-    name: "Carpentry",
-    icon: "https://i.imgur.com/A6pR0Gc.png",
-    details: [
-      "Custom furniture & shelving",
-      "Door & window frame installation",
-      "Staircases & handrails",
-      "Wood repairs & restoration",
-      "Trim, molding & cabinetry"
-    ]
-  },
-  {
-    name: "Tiling",
-    icon: "https://img.icons8.com/fluency/96/000000/tiling.png",
-    details: [
-      "Floor & wall tiling",
-      "Bathroom & kitchen tiling",
-      "Ceramic, porcelain & natural stone",
-      "Precision grouting & sealing",
-      "Tile repair & replacement"
-    ]
-  },
-  {
-    name: "Plastering",
-    icon: "https://img.icons8.com/fluency/96/000000/plaster.png",
-    details: [
-      "Wall & ceiling skimming",
-      "Crack & hole repair",
-      "Smooth plaster finishes",
-      "Drywall taping & jointing",
-      "Preparation for painting"
-    ]
-  },
-  {
-    name: "Maintenance",
-    icon: "https://img.icons8.com/fluency/96/000000/tools.png",
-    details: [
-      "Minor plumbing & electrical fixes",
-      "Door, window & lock adjustments",
-      "General home maintenance",
-      "Furniture & fixture repairs",
-      "Assembly & small installations"
-    ]
-  }
+  {name:"Painting", icon:"https://img.icons8.com/fluency/96/000000/paint-roller.png", details:["Wall painting","Ceilings & trim","Doors & windows","Sealing & caulking","Primer & finish"]},
+  {name:"Carpentry", icon:"https://img.icons8.com/fluency/96/000000/hammer.png", details:["Custom furniture","Door & window frames","Shelving & cabinetry","Staircases","Wood repair & restoration"]},
+  {name:"Tiling", icon:"https://img.icons8.com/fluency/96/000000/tiling.png", details:["Floor & wall tiling","Bathroom & kitchen","Ceramic, porcelain, natural stone","Grouting & sealing","Tile repair"]},
+  {name:"Plastering", icon:"https://img.icons8.com/fluency/96/000000/plaster.png", details:["Wall & ceiling skimming","Crack & hole repair","Smooth finishes","Drywall taping & jointing","Preparation for painting"]},
+  {name:"Maintenance", icon:"https://img.icons8.com/fluency/96/000000/tools.png", details:["Plumbing & electrical fixes","Door/window adjustments","General maintenance","Furniture repair","Small installations"]}
 ];
 
-const grid = document.getElementById('servicesGrid');
-services.forEach(s => {
-  const card = document.createElement('div');
-  card.className = 'service-card';
-  card.innerHTML = `
-    <div class="card-inner">
-      <div class="card-front">
-        <img src="${s.icon}" alt="${s.name} icon">
-        <h3>${s.name}</h3>
-      </div>
-      <div class="card-back">
-        <h4>${s.name} Includes:</h4>
-        <ul>${s.details.map(d => `<li>${d}</li>`).join('')}</ul>
-      </div>
-    </div>
-  `;
+const grid=document.getElementById('servicesGrid');
+services.forEach(s=>{
+  const card=document.createElement('div'); card.className='service-card';
+  card.innerHTML=`<div class="card-inner">
+    <div class="card-front"><img src="${s.icon}" alt="${s.name}"><h3>${s.name}</h3></div>
+    <div class="card-back"><h4>${s.name} Includes:</h4><ul>${s.details.map(d=>`<li>${d}</li>`).join('')}</ul></div>
+  </div>`;
   grid.appendChild(card);
 });
 
-// Modal logic
-const modal = document.getElementById('quoteModal');
-const btns = document.querySelectorAll('#quoteBtn, #quoteBtnBottom');
-const close = document.getElementById('closeModal');
-btns.forEach(btn => btn.onclick = () => modal.style.display = 'flex');
-close.onclick = () => modal.style.display = 'none';
-window.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
+// Modal
+const modal=document.getElementById('quoteModal');
+const btns=document.querySelectorAll('#quoteBtn,#quoteBtnBottom');
+const close=document.getElementById('closeModal');
+btns.forEach(btn=>btn.onclick=()=>modal.style.display='flex');
+close.onclick=()=>modal.style.display='none';
+window.onclick=e=>{if(e.target===modal) modal.style.display='none';};
 </script>
-
 </body>
 </html>
