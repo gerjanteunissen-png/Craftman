@@ -32,10 +32,10 @@
       line-height: 1.6;
     }
 
-    /* HERO - jouw nieuwe banner met gereedschappen in huis-vorm */
+    /* HERO - de linker afbeelding die je wilde (gereedschappen huis op houten vloer) */
     header {
       position: relative;
-      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
                   url('https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat fixed;
       height: 80vh;
       min-height: 600px;
@@ -61,16 +61,17 @@
     }
 
     header h1 {
-      font-size: clamp(3rem, 8vw, 5rem);
+      font-size: clamp(3rem, 8vw, 5.2rem);
       font-weight: 700;
       margin-bottom: 0.8rem;
-      text-shadow: 0 4px 12px rgba(0,0,0,0.7);
+      text-shadow: 0 4px 12px rgba(0,0,0,0.8);
     }
 
     header p {
       font-size: clamp(1.4rem, 4vw, 1.8rem);
       margin-bottom: 2.2rem;
       max-width: 720px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
     }
 
     .btn {
@@ -336,7 +337,7 @@
 </head>
 <body>
 
-<!-- HERO - met jouw nieuwe banner -->
+<!-- HERO met jouw afbeelding (gereedschappen in huis-vorm op houten vloer) -->
 <header class="fade-in">
   <h1>HandyPro Services</h1>
   <p>Your Trusted Local Craftsman – Quality Work You Can Rely On</p>
@@ -409,11 +410,11 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.15 });
 fadeElements.forEach(el => observer.observe(el));
 
-// Services met illustratie voor Painting
+// Services array
 const services = [
   {
     name: "Painting",
-    icon: "https://img.icons8.com/fluency/96/000000/painter.png", // illustratie-stijl schilder met roller (vergelijkbaar met jouw voorbeeld)
+    icon: "https://img.icons8.com/fluency/96/000000/painter.png",
     details: [
       "Wall painting (interior & exterior)",
       "Ceilings, trim & doors",
