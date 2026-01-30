@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HandyPro Services | Professional Home & Business Craftsman</title>
+  <meta name="description" content="Trusted local craftsman offering high-quality painting, plastering, carpentry, tiling, maintenance & repairs. Quality workmanship guaranteed."/>
+  
+  <!-- Open Graph voor betere social previews -->
+  <meta property="og:title" content="HandyPro Services – Professional Craftsmanship"/>
+  <meta property="og:description" content="Expert home improvement: painting, plastering, carpentry, tiling & repairs."/>
+  <meta property="og:image" content="https://media.angi.com/s3fs-public/professional-painting-house-wall-roller.jpeg"/>
+  <meta property="og:type" content="website"/>
+
+  <style>
+    :root {
+      --primary:    #2a7f62;     /* groen */
+      --primary-dark:#1e5c48;
+      --light:      #f8fafc;
+      --gray:       #4b5563;
+      --dark:       #111827;
+      --shadow:     0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; margin:0; padding:0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.65;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.58), rgba(0,0,0,0.65)),
+                  url('https://mbluxury1.s3.amazonaws.com/2019/12/10071750/desert_star-construction_website.jpg') center/cover no-repeat fixed;
+      color: white;
+      padding: 160px 24px 140px;
+      text-align: center;
+      position: relative;
+    }
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 4.2rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    .hero p {
+      font-size: clamp(1.3rem, 3vw, 1.6rem);
+      font-weight: 300;
+      max-width: 720px;
+      margin: 0 auto 2rem;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(42,127,98,0.3);
+    }
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(42,127,98,0.4);
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 1200px;
+      margin: 100px auto;
+      padding: 0 24px;
+    }
+    h2 {
+      text-align: center;
+      color: var(--primary);
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+    .service-card {
+      perspective: 1200px;
+      height: 380px;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.7s ease;
+      transform-style: preserve-3d;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .service-card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      backface-visibility: hidden;
+    }
+    .card-front {
+      background: white;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-front img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .card-front h3 {
+      padding: 1.4rem 1rem 0.6rem;
+      font-size: 1.45rem;
+      color: var(--primary);
+      text-align: center;
+    }
+    .card-back {
+      background: var(--primary);
+      color: white;
+      transform: rotateY(180deg);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .card-back h4 {
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+    .card-back ul {
+      list-style: none;
+      padding: 0;
+    }
+    .card-back li {
+      margin: 0.7rem 0;
+      font-size: 1.05rem;
+    }
+    .card-back li:before {
+      content: "✔ ";
+      color: white;
+      margin-right: 0.6rem;
+    }
+
+    /* ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+    @media (max-width: 900px) {
+      .about { grid-template-columns: 1fr; text-align: center; }
+    }
+
+    /* CONTACT / CTA */
+    .cta {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 90px 24px;
+      border-radius: 16px;
+      margin: 80px 24px;
+      max-width: 1100px;
+    }
+    .cta h2 { color: white; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: #d1d5db;
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 0.95rem;
+    }
+
+    /* ANIMATIES */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: all 0.9s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding: 120px 20px 100px; }
+      h2 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero fade-in">
+  <div class="hero-content">
+    <h1>HandyPro Services</h1>
+    <p>Professioneel vakmanschap voor uw woning en bedrijf — van kleine reparaties tot complete renovaties</p>
+    <a href="#contact" class="btn">Offerte aanvragen</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="fade-in">
+  <h2>Onze Diensten</h2>
+  <div class="services-grid" id="services-grid"></div>
+</section>
+
+<!-- ABOUT -->
+<section class="fade-in">
+  <h2>Over HandyPro</h2>
+  <div class="about">
+    <div>
+      <p>HandyPro is uw betrouwbare lokale vakman met jarenlange ervaring in hoogwaardige woning- en bedrijfsrenovaties. Van kleine herstellingen tot volledige verbouwingen — wij leveren steeds vakwerk met oog voor detail, stiptheid en klanttevredenheid.</p>
+      <p>Ons doel? Uw ruimte mooier, functioneler en waardevoller maken. Kwaliteit, netheid en duidelijke communicatie staan altijd centraal.</p>
+    </div>
+    <img src="https://www.cravingsomecreativity.com/wp-content/uploads/2022/09/Workshop-Garage-Organization.jpg" alt="Professionele werkplaats met gereedschap">
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section id="contact" class="fade-in cta">
+  <h2>Klaar om te starten?</h2>
+  <p style="font-size:1.3rem; max-width:700px; margin:0 auto 2.5rem;">
+    Vraag vandaag nog een vrijblijvende offerte aan. We komen graag bij u langs voor een kennismaking en advies op maat.
+  </p>
+  <a href="mailto:info@handypro.nl?subject=Offerte-aanvraag HandyPro" class="btn" style="background:white; color:var(--primary);">
+    Neem contact op
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 HandyPro Services — Uw vertrouwde vakman<br>
+  Betrouwbaar · Vakkundig · Netjes
+</footer>
+
+<script>
+// Fade-in observer
+const fadeElements = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+
+fadeElements.forEach(el => observer.observe(el));
+
+// Services data met betere afbeeldingen
+const services = [
+  {
+    name: "Schilderen",
+    image: "https://media.angi.com/s3fs-public/professional-painting-house-wall-roller.jpeg",
+    details: [
+      "Binnen- en buitenschilderwerk",
+      "Muren, plafonds en houtwerk",
+      "Deuren, kozijnen en trappen",
+      "Afkitten en net afwerken",
+      "Kleuradvies en sample-werk"
+    ]
+  },
+  {
+    name: "Stucwerk & Plamuren",
+    image: "https://thumbs.dreamstime.com/b/plasterer-smoothing-fresh-plaster-wall-straightedge-trowel-using-119747536.jpg",
+    details: [
+      "Repareren van scheuren en gaten",
+      "Glad stucen en sausklaar maken",
+      "Plafond- en wandherstel",
+      "Spachtelputz en sierpleister",
+      "Ondergrond voorbereiden"
+    ]
+  },
+  {
+    name: "Timmerman / Schrijnwerk",
+    image: "https://sineathconstruction.com/wp-content/uploads/2022/05/sineath-carpentry-workshop.jpg",
+    details: [
+      "Maatwerk kasten en meubels",
+      "Deur- en raamkozijnen",
+      "Plinten, traprenovatie",
+      "Houten vloeren leggen/herstellen",
+      "Dakkapellen en overkappingen"
+    ]
+  },
+  {
+    name: "Tegels & Vloeren",
+    image: "https://www.hyperiontiles.co.uk/cdn/shop/articles/tiling-the-bathroom-floor-to-achieve-a-brilliant-finish-3002835_1024x1024.jpg?v=1763643520",
+    details: [
+      "Vloer- en wandtegelwerk",
+      "Badkamer & keuken betegelen",
+      "Voegen en kitten",
+      "Natuursteen en grote formaten",
+      "Tegelreparatie en vervangen"
+    ]
+  },
+  {
+    name: "Onderhoud & Kleine Reparaties",
+    image: "https://www.mygoodsmith.com/wp-content/uploads/2024/08/98c47fff5df3ab58ce8a66648917d841.jpeg",
+    details: [
+      "Elektra kleine herstellingen",
+      "Loodgieterswerk basis",
+      "Deuren ophangen / afstellen",
+      "Hang- en sluitwerk vervangen",
+      "Algemeen onderhoud huis"
+    ]
+  }
+];
+
+const grid = document.getElementById('services-grid');
+
+services.forEach(service => {
+  const card = document.createElement('div');
+  card.className = 'service-card fade-in';
+  card.innerHTML = `
+    <div class="card-inner">
+      <div class="card-front">
+        <img src="${service.image}" alt="${service.name}">
+        <h3>${service.name}</h3>
+      </div>
+      <div class="card-back">
+        <h4>${service.name} omvat o.a.:</h4>
+        <ul>
+          ${service.details.map(d => `<li>${d}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+  `;
+  grid.appendChild(card);
+});
+</script>
+
+</body>
+</html>
