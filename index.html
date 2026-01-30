@@ -3,295 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HandyPro – Premium Craftsman Services</title>
+<title>HandyPro Services – Your Local Craftsman</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  background: #f7f7f7;
-  color: #333;
-  scroll-behavior: smooth;
-}
+/* --- General Reset --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Roboto', sans-serif; background: #f7f7f7; color: #333; }
 
-/* HEADER */
+/* --- Header --- */
 header {
-  background: url('https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
-  color: white;
-  padding: 140px 20px;
-  text-align: center;
   position: relative;
+  background: url('https://images.pexels.com/photos/1643386/pexels-photo-1643386.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+  height: 100vh;
+  display: flex; justify-content: center; align-items: center;
+  text-align: center;
+  color: white;
 }
 header::after {
   content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.5);
 }
 header h1, header p {
-  position: relative;
-  z-index: 1;
-  margin: 0;
+  position: relative; z-index: 1;
 }
-header h1 {
-  font-size: 3.5em;
-  margin-bottom: 15px;
-  animation: fadeInDown 1s ease forwards;
-}
-header p {
-  font-size: 1.4em;
-  animation: fadeInUp 1s ease forwards;
-}
+header h1 { font-size: 3.5em; margin-bottom: 20px; }
+header p { font-size: 1.5em; }
 
-/* SECTIONS */
-section {
-  max-width: 1200px;
-  margin: 50px auto;
-  padding: 0 20px;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
-}
+/* --- Sections --- */
+section { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+h2 { text-align: center; color: #2a7f62; margin-bottom: 40px; }
 
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-h2 {
-  text-align: center;
-  color: #2a7f62;
-  margin-bottom: 50px;
-  position: relative;
-}
-
-/* SERVICES GRID */
+/* --- Services Grid --- */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
 }
-
-.service-card {
-  perspective: 1000px;
-  cursor: pointer;
-}
-
+.service-card { perspective: 1000px; }
 .card-inner {
   position: relative;
-  width: 100%;
-  height: 300px;
+  width: 100%; height: 300px;
   transition: transform 0.8s;
   transform-style: preserve-3d;
   border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
-
-.service-card:hover .card-inner {
-  transform: rotateY(180deg);
-}
-
+.service-card:hover .card-inner { transform: rotateY(180deg); }
 .card-front, .card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 16px;
+  position: absolute; width: 100%; height: 100%;
+  border-radius: 16px; backface-visibility: hidden; overflow: hidden;
 }
-
 .card-front {
   background: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
   transition: all 0.3s ease;
   position: relative;
 }
-.card-front img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin-top: 20px;
-}
-.card-front h3 {
-  margin: 15px 0 0 0;
-  color: #2a7f62;
-  font-size: 1.3em;
-}
-
-/* Hover overlay */
-.card-front::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(42, 127, 98, 0.15);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  border-radius: 16px;
-}
-.service-card:hover .card-front::after {
-  opacity: 1;
-}
-
+.card-front img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 15px; }
+.card-front h3 { font-size: 1.3em; color: #2a7f62; }
 .card-back {
-  background: #2a7f62;
-  color: white;
-  transform: rotateY(180deg);
-  padding: 20px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  background: #2a7f62; color: white; transform: rotateY(180deg);
+  padding: 20px; display: flex; flex-direction: column; justify-content: center;
 }
-.card-back h4 {
-  margin-top: 0;
-}
-.card-back ul {
-  padding-left: 20px;
-  margin: 0;
-}
+.card-back h4 { margin-bottom: 10px; }
+.card-back ul { padding-left: 20px; }
 
-/* ABOUT US */
-.about {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.about img {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-.about-text {
-  flex: 1;
-}
+/* --- About Us --- */
+.about { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; margin-bottom: 50px; }
+.about img { width: 100%; max-width: 500px; border-radius: 16px; }
+.about-text { flex: 1; }
+.about-text p { margin-bottom: 15px; }
 
-/* BUTTONS */
-button {
-  background-color: #2a7f62;
-  color: white;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1em;
-  margin-top: 20px;
-  transition: all 0.3s ease;
-}
-button:hover {
-  background-color: #237254;
-  transform: translateY(-2px);
-}
+/* --- Buttons --- */
+button { background-color: #2a7f62; color: white; padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; margin-top: 20px; transition: 0.3s; }
+button:hover { background-color: #237254; }
 
-/* MODAL FORM */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 100;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.7);
-  justify-content: center;
-  align-items: center;
-}
-.modal-content {
-  background: url('https://images.pexels.com/photos/3807751/pexels-photo-3807751.jpeg?auto=compress&cs=tinysrgb&w=900') center/cover no-repeat;
-  background-size: cover;
-  padding: 30px;
-  border-radius: 16px;
-  max-width: 500px;
-  width: 90%;
-  position: relative;
-  color: white;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-}
-.modal-content form {
-  background: rgba(0,0,0,0.65);
-  padding: 20px;
-  border-radius: 12px;
-}
-.close {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  font-size: 1.5em;
-  cursor: pointer;
-  color: white;
-}
-.modal-content h3 {
-  margin-top: 0;
-}
+/* --- Modal Form --- */
+.modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); justify-content: center; align-items: center; }
+.modal-content { background: #fff; padding: 30px; border-radius: 16px; max-width: 500px; width: 90%; position: relative; }
+.close { position: absolute; right: 15px; top: 15px; font-size: 1.5em; cursor: pointer; color: #333; }
+.modal-content h3 { margin-top: 0; }
 .modal-content input, .modal-content textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+  width: 100%; padding: 10px; margin-top: 10px; margin-bottom: 15px;
+  border-radius: 6px; border: 1px solid #ccc; box-sizing: border-box;
 }
 .modal-content input[type="submit"] {
-  background-color: #2a7f62;
-  color: white;
-  border: none;
-  cursor: pointer;
+  background-color: #2a7f62; color: white; border: none; cursor: pointer; transition: 0.3s;
 }
-.modal-content input[type="submit"]:hover {
-  background-color: #237254;
-}
+.modal-content input[type="submit"]:hover { background-color: #237254; }
 
-/* FOOTER */
-footer {
-  background: #2a7f62;
-  color: white;
-  text-align: center;
-  padding: 30px;
-  margin-top: 50px;
-}
+/* --- Footer --- */
+footer { background: #2a7f62; color: white; text-align: center; padding: 30px; margin-top: 50px; }
 
-/* ANIMATIONS */
-@keyframes fadeInDown {
-  0% { opacity: 0; transform: translateY(-20px);}
-  100% { opacity: 1; transform: translateY(0);}
-}
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(20px);}
-  100% { opacity: 1; transform: translateY(0);}
-}
+/* --- Animations --- */
+.fade-in { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>HandyPro</h1>
-  <p>Premium Craftsmanship Services</p>
+  <h1>HandyPro Services</h1>
+  <p>Your Trusted Local Craftsman</p>
 </header>
 
-<section class="visible">
+<section>
   <h2>Our Services</h2>
   <div class="services-grid" id="servicesGrid"></div>
 </section>
 
-<section class="visible">
+<section>
   <h2>About Us</h2>
   <div class="about">
     <div class="about-text">
-      <p>HandyPro provides top-quality craftsmanship in home improvement and maintenance. Our services range from painting and carpentry to tiling, plastering, and general maintenance.</p>
-      <p>Contact us for personalized solutions that fit your needs.</p>
-      <p><strong>Email:</strong> info@handypro.com<br>
-         <strong>Phone:</strong> +1 (555) 123-4567<br>
-         <strong>Address:</strong> 123 Workshop Lane, Craftstown, USA</p>
+      <p>HandyPro is your local expert for home renovations and repairs. We provide quality workmanship with attention to every detail.</p>
+      <p>Contact us at: <strong>info@handypro.com</strong><br>Phone: <strong>+123 456 7890</strong><br>Address: <strong>123 Craft Street, Cityville</strong></p>
       <button id="quoteBtn">Request a Quote</button>
     </div>
-    <img src="https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Craftsman workshop">
+    <img src="https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Workshop">
   </div>
 </section>
 
-<!-- MODAL -->
+<!-- Modal Form -->
 <div class="modal" id="quoteModal">
   <div class="modal-content">
     <span class="close" id="closeModal">&times;</span>
@@ -299,68 +134,65 @@ footer {
     <form>
       <label for="name">Full Name</label>
       <input type="text" id="name" required>
+
       <label for="email">Email</label>
       <input type="email" id="email" required>
+
       <label for="phone">Phone Number</label>
       <input type="tel" id="phone" required>
+
       <label for="service">Service Interested In</label>
       <input type="text" id="service" required>
+
       <label for="details">Project Details</label>
       <textarea id="details" rows="4" required></textarea>
+
       <input type="submit" value="Submit Request">
     </form>
   </div>
 </div>
 
 <footer>
-  &copy; 2026 HandyPro — Premium Craftsman Services
+  &copy; 2026 HandyPro — Your Trusted Craftsman
 </footer>
 
 <script>
+// --- Services Array ---
 const services = [
-  { name:"Painting", image:"https://cdn-icons-png.flaticon.com/512/3383/3383032.png", details:["Wall painting","Ceiling painting","Doors & windows","Sealing edges","Color consultation"] },
-  { name:"Carpentry", image:"https://cdn-icons-png.flaticon.com/512/1059/1059611.png", details:["Custom furniture","Door & window frames","Shelving & cabinetry","Wood restoration","Staircase building"] },
-  { name:"Tiling", image:"https://cdn-icons-png.flaticon.com/512/2965/2965567.png", details:["Floor tiling","Wall tiling","Bathroom & kitchen","Grouting","Tile repair"] },
-  { name:"Plastering", image:"https://cdn-icons-png.flaticon.com/512/4150/4150664.png", details:["Wall smoothing","Ceiling repair","Crack filling","Surface preparation","Plaster finishing"] },
-  { name:"Maintenance", image:"https://cdn-icons-png.flaticon.com/512/2201/2201477.png", details:["Electrical fixes","Plumbing repairs","Door & window adjustments","General maintenance","Furniture repair"] }
+  {name:"Painting", image:"https://img.icons8.com/color/96/000000/paint-roller.png", details:["Wall painting","Ceiling painting","Doors & windows","Sealing edges","Color consultation"]},
+  {name:"Carpentry", image:"https://img.icons8.com/color/96/000000/wood.png", details:["Custom furniture","Door & window frames","Shelving & cabinetry","Wood restoration","Staircase building"]},
+  {name:"Tiling", image:"https://img.icons8.com/color/96/000000/tiling.png", details:["Floor tiling","Wall tiling","Bathroom & kitchen","Grouting","Tile repair"]},
+  {name:"Plastering", image:"https://img.icons8.com/color/96/000000/plaster.png", details:["Wall smoothing","Ceiling repair","Crack filling","Surface preparation","Plaster finishing"]},
+  {name:"Maintenance", image:"https://img.icons8.com/color/96/000000/tools.png", details:["Electrical fixes","Plumbing repairs","Door & window adjustments","General maintenance","Furniture repair"]}
 ];
 
+// --- Populate Services ---
 const grid = document.getElementById('servicesGrid');
-services.forEach(s=>{
-  const card=document.createElement('div');
-  card.className='service-card';
-  card.innerHTML=`
-    <div class="card-inner">
-      <div class="card-front">
-        <img src="${s.image}" alt="${s.name}">
-        <h3>${s.name}</h3>
-      </div>
-      <div class="card-back">
-        <h4>${s.name} Includes:</h4>
-        <ul>${s.details.map(d=>`<li>${d}</li>`).join('')}</ul>
-      </div>
-    </div>
-  `;
+services.forEach(s => {
+  const card = document.createElement('div');
+  card.className = 'service-card fade-in';
+  card.innerHTML = `<div class="card-inner">
+    <div class="card-front"><img src="${s.image}" alt="${s.name}"><h3>${s.name}</h3></div>
+    <div class="card-back"><h4>${s.name} Includes:</h4><ul>${s.details.map(d=>`<li>${d}</li>`).join('')}</ul></div>
+  </div>`;
   grid.appendChild(card);
 });
 
-// Modal logic
+// --- Modal Logic ---
 const modal = document.getElementById('quoteModal');
 const btn = document.getElementById('quoteBtn');
 const span = document.getElementById('closeModal');
 
-btn.onclick=()=>modal.style.display='flex';
-span.onclick=()=>modal.style.display='none';
-window.onclick=e=>{if(e.target===modal)modal.style.display='none';}
+btn.onclick = () => modal.style.display = 'flex';
+span.onclick = () => modal.style.display = 'none';
+window.onclick = e => { if(e.target === modal) modal.style.display = 'none'; }
 
-// Scroll animations
-const sections = document.querySelectorAll('section');
+// --- Scroll Animations ---
+const faders = document.querySelectorAll('.fade-in');
 window.addEventListener('scroll', () => {
-  sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
-      sec.classList.add('visible');
-    }
+  faders.forEach(f => {
+    const rect = f.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 50) f.classList.add('visible');
   });
 });
 </script>
