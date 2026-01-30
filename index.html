@@ -32,13 +32,13 @@
       line-height: 1.6;
     }
 
-    /* HERO - mooiere afbeelding: vakman met tool belt */
+    /* HERO - mooier: vakman met tool belt aan het werk */
     header {
       position: relative;
       background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
                   url('https://images.pexels.com/photos/3807751/pexels-photo-3807751.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat fixed;
       height: 70vh;
-      min-height: 500px;
+      min-height: 520px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -61,25 +61,25 @@
     }
 
     header h1 {
-      font-size: clamp(2.8rem, 7vw, 4.5rem);
+      font-size: clamp(2.8rem, 7vw, 4.8rem);
       font-weight: 700;
       margin-bottom: 0.8rem;
       text-shadow: 0 4px 12px rgba(0,0,0,0.7);
     }
 
     header p {
-      font-size: clamp(1.3rem, 3.5vw, 1.6rem);
+      font-size: clamp(1.3rem, 3.5vw, 1.7rem);
       margin-bottom: 2rem;
-      max-width: 700px;
+      max-width: 720px;
     }
 
     .btn {
       background: var(--primary);
       color: white;
-      padding: 14px 36px;
+      padding: 14px 40px;
       border: none;
       border-radius: 8px;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.35s ease;
@@ -116,7 +116,7 @@
 
     .service-card {
       perspective: 1200px;
-      height: 360px;
+      height: 380px;
     }
 
     .card-inner {
@@ -152,14 +152,18 @@
       background: white;
     }
 
-    .card-front i {
+    .card-front i, .card-front img {
+      width: 5.5rem;
+      height: 5.5rem;
       font-size: 5.5rem;
       color: var(--primary);
       margin-bottom: 1.4rem;
       transition: transform 0.6s ease;
+      object-fit: contain;
     }
 
-    .service-card:hover .card-front i {
+    .service-card:hover .card-front i,
+    .service-card:hover .card-front img {
       transform: rotate(360deg);
     }
 
@@ -311,7 +315,7 @@
       font-size: 0.98rem;
     }
 
-    /* FADE-IN ANIMATIE */
+    /* FADE-IN */
     .fade-in {
       opacity: 0;
       transform: translateY(50px);
@@ -324,16 +328,9 @@
     }
 
     @media (max-width: 768px) {
-      header {
-        height: 60vh;
-        min-height: 480px;
-      }
-      h2 {
-        font-size: 2.3rem;
-      }
-      .services-grid {
-        gap: 2rem;
-      }
+      header { height: 60vh; min-height: 480px; }
+      h2 { font-size: 2.3rem; }
+      .services-grid { gap: 2rem; }
     }
   </style>
 </head>
@@ -412,11 +409,11 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.15 });
 fadeElements.forEach(el => observer.observe(el));
 
-// Services met Font Awesome iconen
+// Services met illustratie voor Painting
 const services = [
   {
     name: "Painting",
-    icon: "fa-paint-roller",
+    icon: "https://img.icons8.com/fluency/96/000000/painter.png", // illustratie-stijl schilder met roller
     details: [
       "Wall painting (interior & exterior)",
       "Ceilings, trim & doors",
@@ -475,10 +472,15 @@ const grid = document.getElementById('servicesGrid');
 services.forEach(s => {
   const card = document.createElement('div');
   card.className = 'service-card';
+  const isPainting = s.name === "Painting";
+  const content = isPainting 
+    ? `<img src="${s.icon}" alt="Painter illustration">`
+    : `<i class="fas ${s.icon}"></i>`;
+
   card.innerHTML = `
     <div class="card-inner">
       <div class="card-front">
-        <i class="fas ${s.icon}"></i>
+        ${content}
         <h3>${s.name}</h3>
       </div>
       <div class="card-back">
