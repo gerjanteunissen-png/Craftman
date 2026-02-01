@@ -1,137 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HandyPro Services – Your Trusted Local Craftsman</title>
-  <meta name="description" content="Professional local craftsman for painting, carpentry, tiling, plastering, maintenance & repairs. Reliable, clean, quality work."/>
-
-  <!-- Google Fonts: Roboto -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
-
-  <!-- Font Awesome 6 Free -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Van Dijk Timmerwerken</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #2a7f62;
-      --primary-dark: #1e5c48;
-      --light: #f8f9fa;
-      --dark: #212529;
-      --gray: #6c757d;
-      --shadow: 0 8px 24px rgba(0,0,0,0.08);
+      --primary: #8b5a2b;
+      --secondary: #f5f0ea;
+      --dark: #2b2b2b;
     }
 
-    * { box-sizing: border-box; margin:0; padding:0; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
 
     body {
-      font-family: 'Roboto', sans-serif;
-      background: var(--light);
+      background: var(--secondary);
       color: var(--dark);
       line-height: 1.6;
     }
 
-    /* HERO - de linker afbeelding die je wilde (gereedschappen huis op houten vloer) */
     header {
-      position: relative;
-      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
-                  url('https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat fixed;
-      height: 80vh;
-      min-height: 600px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+      background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url('tmg-article_default_mobile.jpg');
+      background-size: cover;
+      background-position: center;
       color: white;
-      padding: 0 20px;
-    }
-
-    header::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.50);
-    }
-
-    header > * {
-      position: relative;
-      z-index: 1;
+      padding: 6rem 2rem;
+      text-align: center;
     }
 
     header h1 {
-      font-size: clamp(3rem, 8vw, 5.2rem);
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-      text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+      font-size: 3rem;
+      margin-bottom: 1rem;
     }
 
     header p {
-      font-size: clamp(1.4rem, 4vw, 1.8rem);
-      margin-bottom: 2.2rem;
-      max-width: 720px;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
     }
 
     .btn {
       background: var(--primary);
       color: white;
-      padding: 16px 40px;
+      padding: 0.8rem 1.6rem;
       border: none;
-      border-radius: 8px;
-      font-size: 1.2rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.35s ease;
-      box-shadow: 0 6px 20px rgba(42,127,98,0.35);
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
     }
 
     .btn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(30,92,72,0.45);
+      background: #6f451f;
     }
 
-    /* SECTIONS */
     section {
-      max-width: 1240px;
-      margin: 90px auto;
-      padding: 0 24px;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
     }
 
-    h2 {
+    section h2 {
       text-align: center;
-      color: var(--primary);
-      font-size: 2.8rem;
-      font-weight: 700;
       margin-bottom: 3rem;
+      font-size: 2.2rem;
     }
 
-    /* SERVICES GRID */
-    .services-grid {
+    .services {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      perspective: 1000px;
     }
 
-    .service-card {
-      perspective: 1200px;
-      height: 380px;
+    .card {
+      background: transparent;
+      height: 280px;
+      perspective: 1000px;
     }
 
     .card-inner {
       position: relative;
       width: 100%;
       height: 100%;
-      transition: transform 0.8s ease;
+      transition: transform 0.8s;
       transform-style: preserve-3d;
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
     }
 
-    .service-card:hover .card-inner {
+    .card:hover .card-inner {
       transform: rotateY(180deg);
     }
 
@@ -139,368 +100,141 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      border-radius: 16px;
       backface-visibility: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      text-align: center;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     }
 
     .card-front {
-      background: white;
-    }
-
-    .card-front i, .card-front img {
-      width: 5.5rem;
-      height: 5.5rem;
-      font-size: 5.5rem;
-      color: var(--primary);
-      margin-bottom: 1.4rem;
-      transition: transform 0.6s ease;
-      object-fit: contain;
-    }
-
-    .service-card:hover .card-front i,
-    .service-card:hover .card-front img {
-      transform: rotate(360deg);
-    }
-
-    .card-front h3 {
-      font-size: 1.55rem;
-      font-weight: 700;
-      margin-top: 0.8rem;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+      color: white;
+      font-size: 1.4rem;
+      font-weight: 600;
     }
 
     .card-back {
-      background: var(--primary);
-      color: white;
+      background: white;
       transform: rotateY(180deg);
-    }
-
-    .card-back h4 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
+      padding: 1.5rem;
     }
 
     .card-back ul {
-      list-style: none;
-      padding: 0;
-      font-size: 1.08rem;
-      text-align: left;
-      max-width: 85%;
+      list-style: disc;
+      padding-left: 1.2rem;
     }
 
-    .card-back li {
-      margin: 0.7rem 0;
-      position: relative;
-      padding-left: 1.8rem;
-    }
-
-    .card-back li::before {
-      content: "\f00c";
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-      position: absolute;
-      left: 0;
-      color: white;
-    }
-
-    /* ABOUT */
     .about {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
       align-items: center;
     }
 
     .about img {
       width: 100%;
-      border-radius: 16px;
-      box-shadow: var(--shadow);
+      border-radius: 10px;
     }
 
-    @media (max-width: 900px) {
-      .about {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-    }
-
-    /* MODAL */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.65);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .modal-content {
-      background: white;
-      padding: 2.8rem;
-      border-radius: 16px;
-      max-width: 540px;
-      width: 92%;
-      position: relative;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-    }
-
-    .close {
-      position: absolute;
-      right: 1.8rem;
-      top: 1.2rem;
-      font-size: 2.4rem;
-      cursor: pointer;
-      color: var(--gray);
-    }
-
-    .close:hover { color: var(--dark); }
-
-    .modal-content h3 {
-      color: var(--primary);
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .modal-content label {
-      display: block;
-      margin-bottom: 0.6rem;
-      font-weight: 500;
-      color: var(--gray);
-    }
-
-    .modal-content input,
-    .modal-content textarea {
-      width: 100%;
-      padding: 1rem;
-      margin-bottom: 1.4rem;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      font-size: 1.05rem;
-    }
-
-    .modal-content textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .modal-content input[type="submit"] {
-      background: var(--primary);
-      color: white;
-      border: none;
-      width: 100%;
-      padding: 16px;
-      font-size: 1.15rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .modal-content input[type="submit"]:hover {
-      background: var(--primary-dark);
-    }
-
-    /* FOOTER */
     footer {
-      background: var(--primary);
+      background: var(--dark);
       color: white;
       text-align: center;
-      padding: 3rem 1rem;
-      margin-top: 6rem;
-      font-size: 0.98rem;
-    }
-
-    /* FADE-IN ANIMATIE */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 1s ease-out;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 768px) {
-      header { height: 60vh; min-height: 480px; }
-      h2 { font-size: 2.3rem; }
-      .services-grid { gap: 2rem; }
+      padding: 2rem;
     }
   </style>
 </head>
 <body>
 
-<!-- HERO met jouw afbeelding (gereedschappen in huis-vorm op houten vloer) -->
-<header class="fade-in">
-  <h1>HandyPro Services</h1>
-  <p>Your Trusted Local Craftsman – Quality Work You Can Rely On</p>
-  <button class="btn" id="quoteBtn">Request a Quote</button>
+<header>
+  <h1>Van Dijk Timmerwerken</h1>
+  <p>Vakmanschap in hout, gebouwd op vertrouwen en precisie</p>
+  <a href="#quote" class="btn">Get a Quote</a>
 </header>
 
-<!-- SERVICES -->
-<section class="fade-in">
-  <h2>Our Services</h2>
-  <div class="services-grid" id="servicesGrid"></div>
-</section>
+<section>
+  <h2>Onze Services</h2>
+  <div class="services">
 
-<!-- ABOUT -->
-<section class="fade-in">
-  <h2>About Us</h2>
-  <div class="about">
-    <div class="about-text">
-      <p>HandyPro is your reliable local craftsman specializing in high-quality home and office improvements. We offer professional painting, carpentry, tiling, plastering, and general maintenance & repairs.</p>
-      <p>With years of experience, we deliver clean, precise, and durable results — always on time and within budget. Your satisfaction is our priority.</p>
-      <p><strong>Contact us:</strong><br>
-         Email: info@handypro.com<br>
-         Phone: +1 234 567 890<br>
-         Address: 123 Craft Street, Cityville
-      </p>
-      <button class="btn" id="quoteBtnBottom">Get Your Free Quote</button>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c');">
+          Timmer Service
+        </div>
+        <div class="card-back">
+          <h3>Timmer Service</h3>
+          <ul>
+            <li>Maatwerk houtconstructies</li>
+            <li>Reparaties en renovaties</li>
+            <li>Professionele afwerking</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <img src="https://images.pexels.com/photos/3807751/pexels-photo-3807751.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Professional handyman working on home repair project">
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front" style="background-image:url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4');">
+          Interieur op Maat
+        </div>
+        <div class="card-back">
+          <h3>Interieur op Maat</h3>
+          <ul>
+            <li>Kasten & meubels</li>
+            <li>Keukens op maat</li>
+            <li>Duurzame materialen</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front" style="background-image:url('https://images.unsplash.com/photo-1581579186989-0ac90b5f4f33');">
+          Buitenwerk
+        </div>
+        <div class="card-back">
+          <h3>Buitenwerk</h3>
+          <ul>
+            <li>Schuttingen & overkappingen</li>
+            <li>Terrassen</li>
+            <li>Weerbestendig hout</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- MODAL FORM -->
-<div class="modal" id="quoteModal">
-  <div class="modal-content">
-    <span class="close" id="closeModal">×</span>
-    <h3>Request a Free Quote</h3>
-    <form action="https://formspree.io/f/your-form-id-here" method="POST">
-      <label for="name">Full Name *</label>
-      <input type="text" id="name" name="name" required>
-
-      <label for="email">Email *</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="phone">Phone Number *</label>
-      <input type="tel" id="phone" name="phone" required>
-
-      <label for="service">Service Interested In *</label>
-      <input type="text" id="service" name="service" required placeholder="e.g. Full house painting, Bathroom tiling">
-
-      <label for="details">Project Details (optional)</label>
-      <textarea id="details" name="details" placeholder="Describe your project: location, size, timeline, requirements..."></textarea>
-
-      <input type="submit" value="Send Request">
-    </form>
+<section class="about">
+  <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6" alt="Timmerman aan het werk">
+  <div>
+    <h2>Over Ons</h2>
+    <p>
+      Van Dijk Timmerwerken is een fictief maar gepassioneerd timmerbedrijf met meer dan 15 jaar ervaring in ambachtelijk houtwerk. Wij combineren traditionele technieken met moderne oplossingen om elk project duurzaam en uniek te maken.
+    </p>
+    <p>
+      📍 Houtstraat 12, 1234 AB, Utrecht<br>
+      📞 06-12345678<br>
+      ✉️ info@vandijktimmerwerken.nl
+    </p>
   </div>
-</div>
+</section>
 
-<!-- FOOTER -->
+<section id="quote" style="text-align:center;">
+  <h2>Vraag een Offerte Aan</h2>
+  <p>Klaar om jouw project te starten? Neem vandaag nog contact met ons op.</p>
+  <a href="mailto:info@vandijktimmerwerken.nl" class="btn">Get a Quote</a>
+</section>
+
 <footer>
-  © 2026 HandyPro Services – Your Trusted Local Craftsman<br>
-  Professional • Reliable • Clean Workmanship
+  <p>© 2026 Van Dijk Timmerwerken — Alle rechten voorbehouden</p>
 </footer>
-
-<script>
-// Fade-in on scroll
-const fadeElements = document.querySelectorAll('.fade-in');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.15 });
-fadeElements.forEach(el => observer.observe(el));
-
-// Services array
-const services = [
-  {
-    name: "Painting",
-    icon: "https://img.icons8.com/fluency/96/000000/painter.png",
-    details: [
-      "Wall painting (interior & exterior)",
-      "Ceilings, trim & doors",
-      "Sealing edges & caulking",
-      "Primer application",
-      "Final finish & color consultation"
-    ]
-  },
-  {
-    name: "Carpentry",
-    icon: "fa-hammer",
-    details: [
-      "Custom furniture & shelving",
-      "Door & window frame installation",
-      "Staircases & handrails",
-      "Wood repairs & restoration",
-      "Trim, molding & cabinetry"
-    ]
-  },
-  {
-    name: "Tiling",
-    icon: "fa-trowel",
-    details: [
-      "Floor & wall tiling",
-      "Bathroom & kitchen tiling",
-      "Ceramic, porcelain & natural stone",
-      "Precision grouting & sealing",
-      "Tile repair & replacement"
-    ]
-  },
-  {
-    name: "Plastering",
-    icon: "fa-trowel-bricks",
-    details: [
-      "Wall & ceiling skimming",
-      "Crack & hole repair",
-      "Smooth plaster finishes",
-      "Drywall taping & jointing",
-      "Preparation for painting"
-    ]
-  },
-  {
-    name: "Maintenance",
-    icon: "fa-wrench",
-    details: [
-      "Minor plumbing & electrical fixes",
-      "Door, window & lock adjustments",
-      "General home maintenance",
-      "Furniture & fixture repairs",
-      "Assembly & small installations"
-    ]
-  }
-];
-
-const grid = document.getElementById('servicesGrid');
-services.forEach(s => {
-  const card = document.createElement('div');
-  card.className = 'service-card';
-  const isPainting = s.name === "Painting";
-  const content = isPainting 
-    ? `<img src="${s.icon}" alt="Painter illustration">`
-    : `<i class="fas ${s.icon}"></i>`;
-
-  card.innerHTML = `
-    <div class="card-inner">
-      <div class="card-front">
-        ${content}
-        <h3>${s.name}</h3>
-      </div>
-      <div class="card-back">
-        <h4>${s.name} Includes:</h4>
-        <ul>${s.details.map(d => `<li>${d}</li>`).join('')}</ul>
-      </div>
-    </div>`;
-  grid.appendChild(card);
-});
-
-// Modal logic
-const modal = document.getElementById('quoteModal');
-const btns = document.querySelectorAll('#quoteBtn, #quoteBtnBottom');
-const close = document.getElementById('closeModal');
-
-btns.forEach(btn => btn.onclick = () => modal.style.display = 'flex');
-close.onclick = () => modal.style.display = 'none';
-window.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
-</script>
 
 </body>
 </html>
